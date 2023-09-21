@@ -1,0 +1,100 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+
+Usando arquivo configurações para facilitar o comando de conexão
+OpenSSH SSH client
+=================================================================
+
+
+1. Introdução
+2. Criando arquivo de configuração
+3. Estrutura da configuração
+4. Estrutura de exemplo
+5. Conectando com servidor
+6. Referências
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+1. introdução
+~~~~~~~~~~~~~
+OpenSSH SSH client, nos permite pré-configurar HOSTNAME, PORT e USER em um
+arquivo, assim, podemos ter mais facilidades quando nescessitar conectar
+algum servidor.
+
+
+2. Criando arquivo de configuração
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+O Arquivo fica em ~/.ssh/config, causo não exista basta criá-lo:
+
+$ touch ~/.ssh/config
+$ chmod 600 ~./.ssh/config
+
+
+3. Estrutura de configuração
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arquivo ---- ~./.ssh/config
+Host nomeconfiguracao1
+	SSH_OPTION value
+	SSH_OPTION value
+
+Host nomeconfiguracao2
+	SSH_OPTION value
+	SSH_OPTION value
+
+
+4. Estrutura de exemplo
+~~~~~~~~~~~~~~~~~~~~~~~
+arquivo ---- ~./.ssh/config
+Host dev
+	Hostname dev.example.com
+	User dev-user
+	Port 1234
+
+Host prod
+	Hostname prod.example.com
+	User prod-user
+	Port 4321
+
+[ATENÇÃO] 
+	Só pra lembrar arquivo de configuração segue um padrão de não
+	distiguir letra maiúscula de minúscula, então se teu USER ou HOSTNAME
+	tiver nessa execessão, não irá funcionar. Exemplo meu user no
+	vaporHOLE... hermitBits, ele transformará a letra B para minúscula e
+	então minha conexão será recusada.
+	
+	[RFC 952] https://datatracker.ietf.org/doc/html/rfc952
+
+
+5. Conectando com servidor
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+Agora não é mais nescessário usar o comando inteiro para conexão basta
+chamar:
+
+$ ssh <nome da configuração>
+$ ssh dev
+ou
+$ ssh prod
+
+
+6. Referências
+~~~~~~~~~~~~~~
+[Using the ssh config] https://linuxize.com/post/using-the-ssh-config-file/
+[Linux die - Documentation] https://linux.die.net/man/5/ssh_config
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEcPM5QhPZBPn/MKSwHmy+20R4zAcFAmUMmLMACgkQHmy+20R4
+zAdMCwwAueggbjwv1fFvXieoinL/4/47s35wdQjjHeqGD6kCWVUJeiMaM0ApOnvg
+7I5GPTau/RmOFgpRuGgnAXjt4INiLm/l/+sL/hi05kufi1ujDODlndkhA50taQTF
+E52//OdGKB58i1czFgqAboFL3PuArhmoVrgT5V8UCqRinhBoUqjc8i8GBdohM8Kg
+3CHrSI2JkquB6fN5U0U14hvJEfCa61wNqVY9lk9r8wnuVIAk1Rq0e5AWLxwb880Q
+2I0iijjMKRbwj8iXzzuhOg4+Hzy+kvjpHvOJN036sqHW1JdAyxoRPle3C/oOIJEz
+YeEaDV4EULhQT8prNvR8/6im81ZTs0ci8dH30tXonATaox4n32EDgRqFTlE2jk0e
+kmVKNNDMJh++sM0fUnRulG7OpbWPPpot8ECxsVRsEYlZIv9JxmTCO7JbrcCCx1fc
+HSQRf2nUqfiInkchrxOuV8t9fjm1uGvgZOihcBprRTgssG5cJ2uNbK/J1FKKOGFz
+b1eUz20j
+=26id
+-----END PGP SIGNATURE-----
