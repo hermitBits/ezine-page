@@ -1,0 +1,99 @@
+:root {
+	--main-bg-color: black;
+	--main-font-color: white;
+	--main-border-color: white;
+	--main-bg-conteudo-color: white;
+}
+  
+
+.barra-menu {
+	text-align: center;
+	color: var(--main-font-color);
+	margin: 6px 6px 6px 6px;
+}
+
+.barra-menu a {
+	text-decoration: none;
+	color: var(--main-font-color);
+}
+
+.barra-menu a:hover {
+	text-decoration: underline;
+}
+
+.conteudo {
+	border: 3px solid var(--main-border-color);
+	background-color: var(--main-bg-conteudo-color);
+	padding: 2%;
+	height: 400px;
+}
+
+.rodape {
+	margin-top: 13px;
+	border-top: 3px solid var(--main-border-color);
+	padding-top: 6px;
+	color: var(--main-font-color);
+	text-align: right;
+	font-size: 10px;
+}
+
+.principal {
+	background-color: var(--main-bg-color);
+	color: var(--main-font-color);
+	text-align: center;
+}
+
+.principal h1 {
+	border-bottom: 3px solid var(--main-border-color);
+}
+
+main {
+	margin: 0 auto;
+	width: 685px;
+	padding: 1px;
+}
+
+body {
+	background-color: var(--main-bg-color);
+}
+
+
+.tissue {
+	width: 100%;
+	font-size: 11px
+}
+
+.tissue a {
+	color: black;
+	font-weight: normal
+}
+
+.tissue td {
+	border-bottom: 1px solid gray;
+	padding: 3px;
+	background-color: white;
+	color: black;
+	padding-left: 5px;
+	padding-right: 5px
+}
+
+.tissue tr.sp td {
+	background-color: #333;
+	border-top: 2px solid gray;
+}
+
+
+.tissue tr:hover a {
+	color: white
+}
+
+.tissue tr:hover td {
+	background-color: black;
+	color:#FFF
+}
+
+.conteudo-scroll {
+	overflow-y: scroll;
+}
+
+

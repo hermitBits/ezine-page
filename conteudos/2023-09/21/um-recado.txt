@@ -1,0 +1,28 @@
+Bahh fiz esse página inspirado no pessoal do Phrack Magazine, galera 
+desde 1985 fazendo hacking. Gosto da simplicidade da página com seus
+papers em TXT. Nessa mesmo lugar aonde foi postado Manifesto Hacker. 
+Se tu não leu fica uma indicação. Segue um trecho:
+
+"""
+Nós buscamos conhecimento… e vocês nos chamam de criminosos. Nós 
+existimos sem cor de pele, sem nacionalidade, sem preconceito religioso… 
+e vocês nos chamam de criminosos. 
+Você constrói bombas atômicas, você empreende guerras, você assassina,
+engana, e mente para nós e tentam nos fazer acreditar que é para o nosso
+próprio bem, contudo nós somos os criminosos.
+
+Sim, eu sou um criminoso. Meu crime é o da curiosidade. Meu crime é o de
+julgar as pessoas pelo que elas dizem e pensam, não pelo o que aparentam. 
+Meu crime é o de ser mais esperto que você, algo pelo qual você nunca vai 
+me perdoar.
+
+Eu sou um hacker e este é o meu manifesto. Você pode parar este indivíduo, 
+mas você não pode parar todos nós… afinal, somos todos parecidos.
+"""
+                                trecho do Manifesto Hacker por, The Mentor
+
+Minha ideia e ir colocando algumas anotações aqui, que eu acho relevantes
+para serem compartilhadas. Então aguardem!
+
+[Phrack] http://www.phrack.org/
+[Hacker's Manifesto] http://phrack.org/issues/7/3.html
