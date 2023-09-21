@@ -21,6 +21,17 @@
 	text-decoration: underline;
 }
 
+.voltar {
+	text-decoration: none;
+	color: black;
+	font-size: 10px;
+	margin-bottom: 13px;
+}
+
+.voltar a:hover {
+	text-decoration: underline;
+}
+
 .conteudo {
 	border: 3px solid var(--main-border-color);
 	background-color: var(--main-bg-conteudo-color);
@@ -96,4 +107,6 @@ body {
 	overflow-y: scroll;
 }
 
-
+iframe {
+	margin-top: 10px;
+}

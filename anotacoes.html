@@ -1,6 +1,8 @@
+<!Doctype html>
 <html>
 
 	<head>
+		<meta charset="utf-8">
 		<title>© H E R M I T B I T S </title>
 		<link href="./css/style.css" rel="stylesheet" type="text/css">
 	</head>
@@ -13,7 +15,7 @@
 				[ <a href="./index.html" title="Início">Início</a> ]
 				[ <a href="./sobre.html" title="Início">Quem sou eu</a> ]
 				[ <a href="./contato.html" title="Início">Contato</a> ]
-				[ <a href="./index.html" title="Início">Algumas anotações</a> ]
+				[ <a href="./anotacoes.html" title="Início">Algumas anotações</a> ]
 			</div>
 
 			<main class="teste">
@@ -21,15 +23,11 @@
 					<h1>© H E R M I T B I T S </h1>
 				</div>
 
-				<div class="conteudo conteudo-scroll">
-                
+				<div class="conteudo conteudo-scroll" id="conteudo">
+					
 					<table class="tissue" cellpadding="0" cellspacing="0">
                 
-						<tbody>
-                
-							<tr><td><a href="">...</a></td><td>...</td><td>...</td></tr>
-                
-						</tbody>
+						<tbody id="lista"></tbody>
                 
 					</table>
 				
@@ -50,3 +48,63 @@
 	</body>
 
 </html>
+<script>
+
+	const containerConteudo = document.getElementById("conteudo");
+	const rows = document.getElementsByTagName("tr");
+	const lista = document.getElementById("lista");
+
+	const arquivos = [
+		{
+			href: "...",
+			titulo: "Título",
+			autor: "Autor",
+			criado: "Data",
+			ativo: false
+		}
+	]
+
+	function createLinkReturn() {
+		let div = document.createElement("div");
+		div.innerHTML = '<a class="voltar" href="./anotacoes.html" title="Voltar"> [ Voltar ]</a>';
+		containerConteudo.prepend(div)
+	}
+	
+	function listFiles() {
+		for (const arquivo of arquivos) {
+			let tr = document.createElement("tr");
+			
+			let tdTitulo = document.createElement("td");
+			let tdAutor = document.createElement("td");
+			let tdCriado = document.createElement("td");
+			
+			tdTitulo.textContent = arquivo.titulo;
+			tdAutor.textContent = arquivo.autor;
+			tdCriado.textContent = arquivo.criado;
+
+			tr.appendChild(tdTitulo);
+			tr.appendChild(tdAutor);
+			tr.appendChild(tdCriado);
+			
+			if(arquivo.ativo) tr.setAttribute('data-href', arquivo.href);
+			lista.appendChild(tr);
+		}
+	}
+
+	window.onload = function eventListerClickRows() {
+		
+
+		listFiles();
+
+		for(const row of rows) {
+       		row.addEventListener("click", function (e) {
+				let url = this.getAttribute("data-href");
+				if(url !== null){
+					containerConteudo.innerHTML = `<iframe src="${url}" frameborer="0" height="400" width="100%"></iframe>`;
+					createLinkReturn()
+				}
+			})
+	 	}
+	}
+	
+</script>
