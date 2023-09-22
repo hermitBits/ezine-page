@@ -14,7 +14,7 @@ Usando systemd-resolved para cache DNS local
 7. Referências
 
 
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 1. Introdução
@@ -69,6 +69,13 @@ DNS=1.1.1.1 1.0.0.1 cloudflare
 ou
 DNS=8.8.8.8 8.8.4.4 google
 
+Para funcionar precisamos configurar agora systemd-resolved para gerenciar
+o arquivo /etc/resolv.conf criando um link simbólico para
+/run/systemd/resolve/stub-resolv.conf. Para conseguir isso, precisamos ex-
+cluir ou renomear o arquivo /etc/resolv.conf atual.
+
+$ sudo ln -s /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
 Pronto, agora temos que reiniciar o systemd-resolved.
 
 $ sudo systemctl restart systemd-resolved.service
@@ -98,10 +105,10 @@ END
 
 Reiniciamos o serviço de internet
 
-$ sudo service NetworkManager restart 
+$ sudo service NetworkManager restart
 
 Apartir de agora a comunicação será direto dom serviço de DNS, aumentando
-alguns ms na conexão da internet. 
+alguns ms na conexão da internet.
 
 
 7. Referências
@@ -110,17 +117,18 @@ alguns ms na conexão da internet.
 [02][Configure DNS caching] https://www.baeldung.com/linux/configure-dns-caching
 [03][Flush DNS cache] https://devconnected.com/how-to-flush-dns-cache-on-linux/
 
+
 -----BEGIN PGP SIGNATURE-----
 
-iQGzBAEBCgAdFiEEcPM5QhPZBPn/MKSwHmy+20R4zAcFAmUOCyEACgkQHmy+20R4
-zAdRWAv7Bs0nqgEQhVbThr2Dnv+747bhaS3BpT/cqhGlVPToxElqW+cb8FtBaM5H
-KwRhUISM/+PnO+6Jd0x69Bw9UenyTGlU99+MvnAXDiWnW5gknNiyUNyXYVLn0YRF
-2srj1i9G8jGsZKwVeabCiMGUk7nBGsxlyJXWkelEj11p3BCXzR/e7MaVAaRiSvJ0
-GsvxoHhrVsHize4oONLpGg1nqn9pgzejMZan6x5ZH3stq5W048RgsLpywgXUhDFI
-jshRt9fd8V8OELU4vbR/X09HpQyyIEBf9ZsVi3SQ/BDdCsF3ZCRDEXkc3vZyGnTT
-cdLdltmz4OXFBQCPU1QCKd3gB7HBYFKxNQV+/h/VvMDRMkH63jYcoYOyo76DqnTo
-yvR16rEbMtJ4J/j6OmhJO86UM8rgkzFRCrPzXDtWeIp+d61g+5ViClYvd9cMQRaX
-DS2IzSPw+nQgxEr384HBgtvHXOC649mKQNjbNfZqEG6Moy0GAhLWPhpo0+k9HeX1
-vAnIjo3u
-=B5SV
+iQGzBAEBCgAdFiEEcPM5QhPZBPn/MKSwHmy+20R4zAcFAmUOGrsACgkQHmy+20R4
+zAcjKgv/ZLsRJ14c6m3YpJ/wWvt0SdLfkhHcnPgR/vj+mmHbJejsYduoh4YGHVQO
+JBHsjLCuj4U+AjXo6bHOcNPK0tGUQ1BPFRXu2JeEzwMrqJe1epVNPl0vdKL4S70x
+8WOCwbnI+mh7/Ip2tJldSm7lfYoDJUiDaN42SSAX9HZlt1gYjE4JK4AFaKuljUCg
+R6A6O6RYVO5GWSbb96s8ONuGoSQrIi6BRA4VNcGa+OP90MKaYChvQbr0SyIPO6uq
+Wx4V1U2dTki1IXP3fIc+5cYM980OyrTOBtKs8gL9HVFqQqFUWwYvD2AUGbJeHiI4
+OZ9ZFJMrHkRmNg3klnuQnY++EtTBeh5WxTwFvJN9XmUA0MhLuNU3dUFJ0KA1WXNx
+DTqi2QlAEV0j3TMB3bZvgTKRG3qTCbamMO5M3iFOrYYmabo1QBiUnTpV5wYz8d5K
+ZFQIpCEMpTZMp2KL0Rl6tTZ+ggJjUJPlTTj3hyp7R6sV2ki/6PkEkJWy/ueXztT4
+pG4ydAHj
+=XxoY
 -----END PGP SIGNATURE-----
