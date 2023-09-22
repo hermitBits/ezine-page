@@ -1,0 +1,32 @@
+TITULO
+=================================================================
+
+<Numerar as os tópicos>
+<Sempre colocar as refêrencias>
+1. SUMARIO DE TÓPICOS
+2. Referências
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+1. TOPICO
+~~~~~~~~~~~~~
+CONTEÚDO
+
+<Espaço de duas linhas entre tópicos>
+
+6. Referências
+~~~~~~~~~~~~~~
+<Numerar as referências>
+[1][DESCRIÇÃO] URL
+
+<Dois espaços no final do arquivo>
+
+
+---- Tratamento do arquivo:
+- Salvar o arquivo sem extenção
+- usar GPG para assinar o documento
+    $ gpg --clear-sign DOCUMENTO-NOME
+- Adicionar extenção TXT no arquivo gerado pela assinatura
+    $ mv DOCUMENTO-NOME.asc DOCUMENTO-NOME.txt
