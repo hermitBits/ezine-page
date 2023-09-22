@@ -1,0 +1,126 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Usando systemd-resolved para cache DNS local
+=================================================================
+
+
+1. Introdução
+2. Checando se está em execução
+3. Ativando e iniciando-o
+4. Configurando
+5. Limpando cache
+6. Desativando
+7. Referências
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+1. Introdução
+~~~~~~~~~~~~~
+Um cache DNS ẽ como um banco de dados temporário de pesquisas recentes de
+DNS que nosso computador pode consultar rapidamente quando tenta resolver
+um endereço. Ele armazena todas os registros de visitas recentes tentados.
+O cache de DNS ẽ útil porque intercepta solicitaçÕes de DNS de sites visi-
+tados recentemente antes de serem enviados para internet e os encaminha
+para seu banco local. Isso reduz significamente o tempo necessário para
+carregar sites já visitados, pois seus respectivos endereços IP já foram
+armazenados.
+
+O que é systemd-resolved?
+É um serviço do sistema que fornece resolução de nomes de rede para apli-
+cativos locais. Ele implementa um resolvedor de stub DNS/DNSSEC de cache e
+validação, bem como resolvedor e respondedor LLMNR e MulticastDNS. Os a-
+plicativos locais podem enviar solitações de resolução de nomes de rede
+por meio de três interfaces: API Nativa, API glibc e DNS stub.
+
+
+2. Checando se está em execução
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Por padrão, distribuições Linux como Ubuntu 19.04 ou superior têm execução
+resolvida pelo systemd.
+
+Checando se ele está rodando:
+
+$ sudo resolvectl status
+
+Caso estiver rodando vai aparecer as interfaces de rede e a Global, senão,
+algum erro.
+
+
+3. Ativando e iniciando-o
+~~~~~~~~~~~~~~~~~~~~~~~~~
+$ sudo systemctl enable systemd-resolved.service
+$ sudo systemctl start systemd-resolved.service
+
+
+4. Configurando
+~~~~~~~~~~~~~~~
+Precisamos editar arquivo de configuração resolvido pelo systemd e incluir
+o par de endereços DNS público ou privado.
+
+$ sudo vi /etc/systemd/resolved.conf
+
+Terá uma linha comentada aonde fica a entrada dos DNS que serão usados,
+basta descomentar e inserir o par de DNS.
+
+DNS=1.1.1.1 1.0.0.1 cloudflare
+ou
+DNS=8.8.8.8 8.8.4.4 google
+
+Pronto, agora temos que reiniciar o systemd-resolved.
+
+$ sudo systemctl restart systemd-resolved.service
+
+
+5. Limpando cache
+~~~~~~~~~~~~~~~~~
+Com seguinte comando:
+
+$ sudo resolvectl flush-caches
+
+
+6. Desativando
+~~~~~~~~~~~~~~
+Primeiro desabilitamos systemd-resolved e o paramos.
+
+$ systemctl disable systemd-resolved.service
+$ systemctl stop systemd-resolved
+
+Reescrevemos o arquivo /etc/resolve.conf.
+
+$ rm -f /etc/resolv.conf
+$ tee /etc/resolv.conf << END
+nameserver 1,1,1,1
+nameserver 1.0.0.1
+END
+
+Reiniciamos o serviço de internet
+
+$ sudo service NetworkManager restart 
+
+Apartir de agora a comunicação será direto dom serviço de DNS, aumentando
+alguns ms na conexão da internet. 
+
+
+7. Referências
+~~~~~~~~~~~~~~
+[01][systemd-resolved.service] https://www.freedesktop.org/software/systemd/man/systemd-resolved.service.html
+[02][Configure DNS caching] https://www.baeldung.com/linux/configure-dns-caching
+[03][Flush DNS cache] https://devconnected.com/how-to-flush-dns-cache-on-linux/
+
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEcPM5QhPZBPn/MKSwHmy+20R4zAcFAmUOCyEACgkQHmy+20R4
+zAdRWAv7Bs0nqgEQhVbThr2Dnv+747bhaS3BpT/cqhGlVPToxElqW+cb8FtBaM5H
+KwRhUISM/+PnO+6Jd0x69Bw9UenyTGlU99+MvnAXDiWnW5gknNiyUNyXYVLn0YRF
+2srj1i9G8jGsZKwVeabCiMGUk7nBGsxlyJXWkelEj11p3BCXzR/e7MaVAaRiSvJ0
+GsvxoHhrVsHize4oONLpGg1nqn9pgzejMZan6x5ZH3stq5W048RgsLpywgXUhDFI
+jshRt9fd8V8OELU4vbR/X09HpQyyIEBf9ZsVi3SQ/BDdCsF3ZCRDEXkc3vZyGnTT
+cdLdltmz4OXFBQCPU1QCKd3gB7HBYFKxNQV+/h/VvMDRMkH63jYcoYOyo76DqnTo
+yvR16rEbMtJ4J/j6OmhJO86UM8rgkzFRCrPzXDtWeIp+d61g+5ViClYvd9cMQRaX
+DS2IzSPw+nQgxEr384HBgtvHXOC649mKQNjbNfZqEG6Moy0GAhLWPhpo0+k9HeX1
+vAnIjo3u
+=B5SV
+-----END PGP SIGNATURE-----

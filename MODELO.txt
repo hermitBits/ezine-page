@@ -30,3 +30,9 @@ CONTEÚDO
     $ gpg --clear-sign DOCUMENTO-NOME
 - Adicionar extenção TXT no arquivo gerado pela assinatura
     $ mv DOCUMENTO-NOME.asc DOCUMENTO-NOME.txt
+
+---- Modelo Commit:
+Anotação - <NUMERAÇÃO>:
+        autor: <autor>
+        descrição: <descrição>
+        data: <data>
