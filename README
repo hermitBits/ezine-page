@@ -1,0 +1,70 @@
+E-zine 
+======
+
+1. Introdução
+2. Formato de publicação de conteúdos
+3. Componentização
+2. Referências
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+1. Introdução
+~~~~~~~~~~~~~
+Desde a popularização da internet, o termo E-zine tem sido usado para es-
+crever  uma  variedade  de  publicações  on-line  periódicas,  desde revis-
+tas eletrônicas até newsletters e blogs. Embora as E-zines possam assumir 
+muitas formas diferentes, elas geralmente são caracterizadas por um foco 
+específico em  um  tópico  ou  área  de  interesse,  bem  como  uma  estru-
+tura  de  conteúdo semelhante às publicações impressas. Magalhães (2016) 
+considera que as E-zines têm se tornado cada vez mais populares nos últimos
+anos, à medida que mais pessoas passam a consumir conteúdo online. No en-
+tanto, além de serem uma  ótima  fonte  de  informações  sobre  um  deter-
+minado  tema,  as  E-zines também podem desempenhar um papel importante na 
+educação midiática.[1]
+
+Ou seja... acessar, analisar, criar e participar de maneira crítica.
+
+Essa é minha motivação para ter e manter um e-zine!
+
+
+2. Formato de publicação de conteúdos
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Escolhi um estrutura aonde os arquivos em textos são guardados em pastas,
+a pasta mais externa contém <ANO>-<MÊS>, as filhas serão os dias do mês.
+Também optei por numerar por ordem cronológica os arquivos, assim na lista-
+gem tem uma visão mas clara do que é antigo ou novo.
+As publicações ficam na aba `Algumas anotações`, para aparecer na listagem,
+tem um arquivo que fica na raiz da pasta de conteúdos chamado `arquivos.js`
+nesse terá uma array declarada, que vai organizar os arquivos criados para 
+alimentar a tabela de visualização.
+
+Estrutura, que  array de arquivos recebe:
+arquivo: {
+    href; string,
+    titulo: string,
+    autor: string,
+    criado: string,
+    ativo: booleano
+}
+
+arquivos.js: array[Arquivo]
+
+A publicação tem um padrão, que consta melhor no arquivo MODELO.txt.
+
+
+3.Componentização
+~~~~~~~~~~~~~~~~~
+Para ter um deslumbre de como funciona por baixo alguns framework`s JS de 
+frontend, implementei Custom Elements[2]. Com ele é possivél criar com-
+ponentes personalizados e entáo ter reuso mais otimizado na página.
+São 5 componentes, ambos aparecem em todas as páginas HTML: Banner, Footer,
+Header, Menu, MenuLink. São bem simples, criam elementos básicos e os esti-
+lização. O MenuLink brinca um pouco com event vale a pena da uma olhada.
+
+
+6. Referências
+~~~~~~~~~~~~~~
+[1][E-zine e cultura pop em uma prática pedagógica ] https://periodicos.ufes.br/kirikere/article/view/39503
+[2][Using_custom_elements] https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
