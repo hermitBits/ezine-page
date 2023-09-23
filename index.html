@@ -7,36 +7,22 @@
 		<meta name="copyleft" content="© 2023 hermitBits" />
 		<meta http-equiv="pragma" content="no-cache" />
 		<meta name="googlebot" content="noarchive">
-		<title>© H E R M I T B I T S </title>
+		<script src="componentes/Banner.js" type="text/javascript" defer></script>
+		<script src="componentes/MenuLink.js" type="text/javascript" defer></script>
+		<script src="componentes/Menu.js" type="text/javascript" defer></script>
+		<script src="componentes/Header.js" type="text/javascript" defer></script>
+		<script src="componentes/Footer.js" type="text/javascript" defer></script>
 		<link href="./css/style.css" rel="stylesheet" type="text/css">
+		<title>© H E R M I T B I T S </title>
 	</head>
 	<body>
-		<header> 
-			<div class="barra-menu">
-				[ <a href="./index.html" title="Início">Início</a> ]
-				[ <a href="./sobre.html" title="Início">Quem sou eu</a> ]
-				[ <a href="./contato.html" title="Início">Contato</a> ]
-				[ <a href="./anotacoes.html" title="Início">Algumas anotações</a> ]
-			</div>
-		
-		</header>
+		<header-component></header-component>
 		<main>
-			<div class="banner">
-				<h1>© H E R M I T B I T S </h1>
-			</div>
+			<banner-component></banner-component>
 			<div class="conteudo">
 				<iframe src="./conteudos/2023-09/21/um-recado.txt"></iframe>
 			</div>
 		</main>
-		<footer>
-			<div class="barra-menu">
-				[ <a href="./index.html" title="Início">Início</a> ]
-				[ <a href="./sobre.html" title="Início">Quem sou eu</a> ]
-				[ <a href="./contato.html" title="Início">Contato</a> ]
-				[ <a href="./anotacoes.html" title="Início">Algumas anotações</a> ]
-			</div>
-			<hr>
-			<p>© Copyleft 2023, hermitBits.</p>
-		</footer>
+		<footer-component></footer-component>
 	</body>
 </html>
