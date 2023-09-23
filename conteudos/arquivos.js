@@ -7,7 +7,7 @@ const arquivos = [
         ativo: false
     },
     {
-        href: "conteudos/2023-09/21/01-configuraca-conexao-ssh.txt.asc",
+        href: "conteudos/2023-09/21/01-configuraca-conexao-ssh.txt.asc.txt",
         titulo: '01 - Arquivo de configurações para facilitar conexão SSH',
         autor: 'hermitBits',
         criado: '21/09/2023',

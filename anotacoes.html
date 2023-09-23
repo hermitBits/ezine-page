@@ -1,99 +1,84 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
-
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="content-language" content="pt-br" />
+		<meta name="copyleft" content="© 2023 hermitBits" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta name="googlebot" content="noarchive">
 		<title>© H E R M I T B I T S </title>
 		<link href="./css/style.css" rel="stylesheet" type="text/css">
 	</head>
-
 	<body>
-
-		<div class="isolar">
-			
-            <div class="barra-menu">
+		<header> 
+			<div class="barra-menu">
 				[ <a href="./index.html" title="Início">Início</a> ]
 				[ <a href="./sobre.html" title="Início">Quem sou eu</a> ]
 				[ <a href="./contato.html" title="Início">Contato</a> ]
 				[ <a href="./anotacoes.html" title="Início">Algumas anotações</a> ]
 			</div>
-
-			<main class="teste">
-				<div class="principal">
-					<h1>© H E R M I T B I T S </h1>
-				</div>
-
-				<div class="conteudo conteudo-scroll" id="conteudo">
-					
-					<table class="tissue" cellpadding="0" cellspacing="0">
-                
-						<tbody id="lista"></tbody>
-                
-					</table>
-				
-				</div>
-			</main>
-
-			<div class="barra-menu teste">
+		</header>
+		<main>
+			<div class="banner">
+				<h1>© H E R M I T B I T S </h1>
+			</div>
+			<div class="conteudo conteudo-scroll" id="conteudo">
+				<table class="tissue" cellpadding="0" cellspacing="0">
+					<tbody id="lista"></tbody>
+				</table>
+			</div>
+		</main>
+		<footer>
+			<div class="barra-menu">
 				[ <a href="./index.html" title="Início">Início</a> ]
 				[ <a href="./sobre.html" title="Início">Quem sou eu</a> ]
 				[ <a href="./contato.html" title="Início">Contato</a> ]
-				[ <a href="./index.html" title="Início">Algumas anotações</a> ]
+				[ <a href="./anotacoes.html" title="Início">Algumas anotações</a> ]
 			</div>
-
-		</div>
-
-		<div class="rodape">© Copyleft 2023, hermitBits.</div>
-
+			<hr>
+			<p>© Copyleft 2023, hermitBits.</p>
+		</footer>
 	</body>
-
 </html>
 <script src="conteudos/arquivos.js"></script>
 <script>
-
 	const containerConteudo = document.getElementById("conteudo");
 	const rows = document.getElementsByTagName("tr");
 	const lista = document.getElementById("lista");
-
-	function createLinkReturn() {
-		let div = document.createElement("div");
+	
+	function acaoBotaoVoltar() {
+		const div = document.createElement("div");
 		div.innerHTML = '<a class="voltar" href="./anotacoes.html" title="Voltar"> [ Voltar ]</a>';
 		containerConteudo.prepend(div)
 	}
 	
-	function listFiles() {
+	function listarAnotacoes() {
 		for (const arquivo of arquivos) {
-			let tr = document.createElement("tr");
-			
-			let tdTitulo = document.createElement("td");
-			let tdAutor = document.createElement("td");
-			let tdCriado = document.createElement("td");
-			
+			const trRow = document.createElement("tr");
+			const tdTitulo = document.createElement("td");
+			const tdAutor = document.createElement("td");
+			const tdCriado = document.createElement("td");
 			tdTitulo.textContent = arquivo.titulo;
 			tdAutor.textContent = arquivo.autor;
 			tdCriado.textContent = arquivo.criado;
-
-			tr.appendChild(tdTitulo);
-			tr.appendChild(tdAutor);
-			tr.appendChild(tdCriado);
-			
-			if(arquivo.ativo) tr.setAttribute('data-href', arquivo.href);
-			lista.appendChild(tr);
+			trRow.appendChild(tdTitulo);
+			trRow.appendChild(tdAutor);
+			trRow.appendChild(tdCriado);
+			if(arquivo.ativo) trRow.setAttribute('data-href', arquivo.href);
+			lista.appendChild(trRow);
 		}
 	}
-
+	
 	window.onload = function eventListerClickRows() {
-		listFiles();
-
+		listarAnotacoes();
 		for(const row of rows) {
        		row.addEventListener("click", function (e) {
-				let url = this.getAttribute("data-href");
-				if(url !== null){
-					containerConteudo.innerHTML = `<iframe src="${url}" frameborer="0" height="400" width="100%"></iframe>`;
-					createLinkReturn()
-				}
+				const url = this.getAttribute("data-href");
+				if(!(url !== null)) return;
+				containerConteudo.innerHTML = `<iframe src="${url}"></iframe>`;
+				acaoBotaoVoltar()
 			})
 	 	}
 	}
-	
 </script>
