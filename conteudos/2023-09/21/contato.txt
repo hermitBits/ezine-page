@@ -2,6 +2,7 @@ Caso eu estiver online talk ou IRC, senão:
 
 Email: hermitBits@vaporhole.xyz
 GitHub: hermitBits
+Source twtxt: https://vaporhole.xyz/~hermitBits/twtxt.txt
 
 Minha chave PGP:
 -----BEGIN PGP PUBLIC KEY BLOCK-----

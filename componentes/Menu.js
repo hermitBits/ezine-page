@@ -16,6 +16,7 @@ class Menu extends HTMLElement {
                 <menu-link-component href="./sobre.html" title="Quem sou eu"></menu-link-component>
                 <menu-link-component href="./contato.html" title="Contato"></menu-link-component>
                 <menu-link-component href="./anotacoes.html" title="Algumas anotações"></menu-link-component>
+                <menu-link-component href="./tweet.html" title="Tweet"></menu-link-component>
             </div>
         `;
         this.setStyle();
